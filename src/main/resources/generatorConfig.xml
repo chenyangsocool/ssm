@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="context">
+        <!-- 是否生成注释 -->
+        <commentGenerator type="com.chenyangsocool.ssm.tools.mybatis.RemarksCommentGenerator">
+        </commentGenerator>
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/ssm"
+                        userId="root" password="root" />
+
+        <!-- 生成的包名和工程名 -->
+        <javaModelGenerator targetPackage="com.chenyangsocool.ssm.model"
+                            targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="mapping"
+                         targetProject="src/main/resources" />
+        <javaClientGenerator targetPackage="com.chenyangsocool.ssm.dao"
+                             targetProject="src/main/java" type="XMLMAPPER" />
+
+        <!-- 数据库表 -->
+        <table  tableName="user" domainObjectName="User">
+            <!-- 设置别名 -->
+            <!--
+            <columnOverride column="login_pwd" property="loginPwd" />
+             -->
+        </table>
+    </context>
+</generatorConfiguration>
