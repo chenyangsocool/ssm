@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.MediaType;
 
 @Controller
 @RequestMapping("/test")
-@Api(value = "测试信息", tags = {"测试相关接口"})//swagger控制器说明注解
+//@Api(value = "测试信息", tags = {"测试相关接口"})//swagger控制器说明注解
+@Api(value = "用户信息", description = "用户信息", produces = MediaType.APPLICATION_JSON)
 public class TestController {
 
     @Resource
