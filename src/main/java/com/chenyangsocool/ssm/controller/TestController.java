@@ -2,6 +2,8 @@ package com.chenyangsocool.ssm.controller;
 
 import com.chenyangsocool.ssm.model.Test;
 import com.chenyangsocool.ssm.service.ITestService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/test")
+@Api(value = "测试信息", tags = {"测试相关接口"})//swagger控制器说明注解
 public class TestController {
 
     @Resource
@@ -29,6 +32,7 @@ public class TestController {
 
     @RequestMapping("/index_api")
     @ResponseBody
+    @ApiOperation(value = "获取单个测试实例", notes = "传入一个id，获取该id对应的实例。",httpMethod = "GET")//swagger方法注解
     public Test Index(HttpServletRequest request,Model model) {
         int id = Integer.parseInt(request.getParameter("id"));
         return this.testService.getModelById(id);
