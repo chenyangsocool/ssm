@@ -8,7 +8,10 @@
   <!-- Spring和mybatis的配置文件 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-mybatis.xml</param-value>
+    <param-value>
+      classpath:spring-mybatis.xml
+      classpath:spring-cxf.xml
+    </param-value>
   </context-param>
 
   <!-- 编码过滤器 -->
@@ -35,6 +38,18 @@
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
+
+  <servlet>
+    <description>Apache CXF Endpoint</description>
+    <display-name>cxf</display-name>
+    <servlet-name>cxf</servlet-name>
+    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cxf</servlet-name>
+    <url-pattern>/webservice/*</url-pattern>
+  </servlet-mapping>
 
   <!-- Spring MVC servlet -->
   <servlet>
